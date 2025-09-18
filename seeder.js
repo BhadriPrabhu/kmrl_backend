@@ -22,10 +22,10 @@ mongoose.connect(process.env.MONGO_URI, {
 // --- Your Mock Data (Adapted for Mongoose Schema) ---
 // Note: We're adding a plain text password '123456' which will be hashed.
 const users = [
-    { name: 'Rajesh Kumar', email: 'rajesh.kumar@kmrl.co.in', role: 'Admin', password: '123456' },
-    { name: 'Priya Nair', email: 'priya.nair@kmrl.co.in', role: 'Station Controller', password: '123456' },
-    { name: 'Mohammed Rashid', email: 'm.rashid@kmrl.co.in', role: 'Engineer', password: '123456' },
-    { name: 'Lakshmi Menon', email: 'lakshmi.menon@kmrl.co.in', role: 'HR Officer', password: '123456' }
+    { name: 'Rajesh Kumar', email: 'rajesh.kumar@kmrl.co.in', role: 'admin', password: '123456', department: 'IT', isActive: true },
+    { name: 'Priya Nair', email: 'priya.nair@kmrl.co.in', role: 'station_controller', password: '123456', department: 'Operations', isActive: true },
+    { name: 'Mohammed Rashid', email: 'm.rashid@kmrl.co.in', role: 'engineer', password: '123456', department: 'Engineering', isActive: true },
+    { name: 'Lakshmi Menon', email: 'lakshmi.menon@kmrl.co.in', role: 'hr_officer', password: '123456', department: 'Human Resources', isActive: false }
 ];
 
 const documents = [

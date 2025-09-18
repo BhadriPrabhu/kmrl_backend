@@ -16,6 +16,8 @@ const documentRoutes = require('./routes/document.route.js');
 const userRoutes = require('./routes/user.route.js');
 const complianceRoutes = require('./routes/compliance.route.js');
 const commentRoutes = require('./routes/comment.route.js');
+const dashboardRoutes = require('./routes/dashboard.routes.js');
+
 
 const app = express();
 
@@ -29,6 +31,7 @@ app.use('/api/documents', documentRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/compliance', complianceRoutes);
 app.use('/api/comments', commentRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // Serve uploaded files statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

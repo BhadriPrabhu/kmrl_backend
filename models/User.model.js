@@ -25,15 +25,23 @@ const UserSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: [
-            'Admin',
-            'Station Controller',
-            'Engineer',
-            'Procurement Officer',
-            'HR Officer',
-            'Finance Officer',
-            'Executive Director',
+            'admin',
+            'station_controller',
+            'engineer',
+            'procurement_officer',
+            'hr_officer',
+            'finance_officer',
+            'executive_director',
         ],
-        default: 'Engineer',
+        default: 'engineer',
+    },
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
+    department: {
+        type: String,
+        default: 'Unassigned',
     },
     createdAt: {
         type: Date,

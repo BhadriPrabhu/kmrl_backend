@@ -14,9 +14,12 @@ exports.getUsers = async (req, res, next) => {
 
 // @desc    Update user role
 // @route   PUT /api/users/:id/role
-exports.updateUserRole = async (req, res, next) => {
+exports.updateUser = async (req, res, next) => {
     try {
-        const user = await User.findByIdAndUpdate(req.params.id, { role: req.body.role }, {
+        // Exclude password from being updated through this endpoint
+        const { password, ...updateData } = req.body;
+
+        const user = await User.findByIdAndUpdate(req.params.id, updateData, {
             new: true,
             runValidators: true
         });
@@ -24,6 +27,24 @@ exports.updateUserRole = async (req, res, next) => {
             return res.status(404).json({ success: false, message: 'User not found' });
         }
         res.status(200).json({ success: true, data: user });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Server Error' });
+    }
+};
+
+
+// @desc    Delete user
+// @route   DELETE /api/users/:id
+exports.deleteUser = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        await user.deleteOne();
+
+        res.status(200).json({ success: true, data: {} });
     } catch (err) {
         res.status(500).json({ success: false, message: 'Server Error' });
     }
