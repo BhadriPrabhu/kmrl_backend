@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "import-data": "node seeder -i",
     "destroy-data": "node seeder -d",
-    "dev": "nodemon server.js"
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js"
   },
   "keywords": [],
   "author": "",
